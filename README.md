@@ -9,9 +9,6 @@ Este proyecto es un backend para gestionar encuestas musicales, desarrollado con
 - [Configuración del Proyecto](#configuración-del-proyecto)
 - [Uso de Docker](#uso-de-docker)
 - [API Endpoints](#api-endpoints)
-- [Ejemplo de Solicitudes](#ejemplo-de-solicitudes)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
 
 ## Características
 
@@ -39,10 +36,9 @@ Este proyecto es un backend para gestionar encuestas musicales, desarrollado con
    cd encuestas-back
 2. Asegúrate de tener configurado el archivo application.properties con tus credenciales de base de datos y otras configuraciones necesarias.
 
-3. Iniciar base de datos:
+3. Iniciar base de datos :
    ```bash
-   docker-compose up
-
+   docker compose up
 ## API Endpoints
 
 - Guardar Encuesta
