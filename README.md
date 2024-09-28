@@ -42,7 +42,7 @@ Este proyecto es un backend para gestionar encuestas musicales, desarrollado con
 ## API Endpoints
 
 - Guardar Encuesta
-   URL: /demo/guardarencuesta
+   URL: /api/guardarencuesta
    Método: PUT
    Cuerpo:
       {
@@ -50,7 +50,7 @@ Este proyecto es un backend para gestionar encuestas musicales, desarrollado con
          "respuesta": "Pop"
       }
 - Obtener Resultados:
-   URL: /demo/api/results
+   URL: /api/results
    Método: GET
    Respuesta:
       {
