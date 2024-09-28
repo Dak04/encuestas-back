@@ -37,3 +37,29 @@ Este proyecto es un backend para gestionar encuestas musicales, desarrollado con
    ```bash
    git clone https://github.com/Dak04/encuestas-back.git
    cd encuestas-back
+2. Asegúrate de tener configurado el archivo application.properties con tus credenciales de base de datos y otras configuraciones necesarias.
+
+3. Iniciar base de datos:
+   ```bash
+   docker-compose up
+
+## API Endpoints
+
+- Guardar Encuesta
+   URL: /demo/guardarencuesta
+   Método: PUT
+   Cuerpo:
+      {
+         "email": "valentina@gmail.com",
+         "respuesta": "Pop"
+      }
+- Obtener Resultados:
+   URL: /demo/api/results
+   Método: GET
+   Respuesta:
+      {
+         "Pop": 1,
+         "Rock": 1
+      }
+
+

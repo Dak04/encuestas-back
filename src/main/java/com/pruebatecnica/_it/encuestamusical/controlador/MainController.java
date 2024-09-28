@@ -17,8 +17,8 @@ import com.pruebatecnica._it.encuestamusical.servicios.EncuestaService;
 import com.pruebatecnica._it.encuestamusical.servicios.EstiloService;
 import com.pruebatecnica._it.encuestamusical.servicios.UserService;
 
-@RestController // This means that this class is a Controller
-@RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
+@RestController 
+@RequestMapping(path="/api")
 public class MainController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class MainController {
     @Autowired
     private EstiloService estiloService;
 
-    @PostMapping(path="/add") // Map ONLY POST Requests
+    @PostMapping(path="/add") 
     public @ResponseBody String addNewUser (@RequestParam String name
         , @RequestParam String email) {
 
@@ -39,7 +39,6 @@ public class MainController {
 
     @GetMapping(path="/all")
     public @ResponseBody  Iterable<User>getAllUsers() {
-        // This returns a JSON or XML with the users
         return userService.getAllUsers();
     }
 
@@ -47,24 +46,23 @@ public class MainController {
     @PostMapping(path="/guardarencuesta")
     public @ResponseBody String guardarRespuesta (@RequestParam String respuesta
         , @RequestParam String email) {
-
             return encuestaService.responder(email, respuesta);
     }
 
-    @PostMapping(path="/guardarestilo") // Map ONLY POST Requests
+    @PostMapping(path="/guardarestilo") 
     public @ResponseBody String guardarEstilo (@RequestParam String descripcion) {
 
             return estiloService.add(descripcion);
     }
 
     @CrossOrigin(origins = "http://localhost:4200") 
-    @GetMapping("/api/results")
+    @GetMapping("/results")
     public Map<String, Long> obtenerResultadosEncuesta() {
         return encuestaService.obtenerResultados();
     }
 
     @CrossOrigin(origins = "http://localhost:4200") 
-    @GetMapping("/api/music-styles")
+    @GetMapping("/music-styles")
     public List<String> getMusicStyles(){
     
         return estiloService.getMusicStyles();
