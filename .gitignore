@@ -34,3 +34,4 @@ build/
 mvnw.cmd
 .mvn/wrapper/maven-wrapper.properties
 mvnw
+sonar-project.properties

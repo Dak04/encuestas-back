@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -47,8 +46,6 @@ class EncuestaServiceImplTest {
         when(userService.getUserByEmail(email)).thenReturn(null);
         when(encuestaRepository.findByEmail(email)).thenReturn(null);
 
-        // Simula la creación del usuario y el guardado de la encuesta
-        doNothing().when(userService).add(email, email);
         when(encuestaRepository.save(any(Encuesta.class))).thenReturn(null);
 
         // Llama al método `responder`

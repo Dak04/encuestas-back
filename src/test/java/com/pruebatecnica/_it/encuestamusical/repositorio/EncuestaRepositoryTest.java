@@ -5,20 +5,31 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.annotation.Rollback;
 
 import com.pruebatecnica._it.encuestamusical.dominio.Encuesta;
 
+
 @DataJpaTest // Utiliza una base de datos en memoria para los tests
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // Usa una base de datos real o de H2
 class EncuestaRepositoryTest {
 
     @Autowired
     private EncuestaRepository encuestaRepository;
 
+    @BeforeEach
+    void setUp() {
+        // Limpiar la base de datos antes de cada test
+        encuestaRepository.deleteAll();
+    }
+
     @Test
+    @Rollback(true)
     void testFindByEmail() {
         // Crear y guardar una encuesta
         Encuesta encuesta = new Encuesta();
@@ -36,7 +47,7 @@ class EncuestaRepositoryTest {
     }
 
     @Test
-    @Sql("/test-data.sql") // Opcional: carga datos desde un archivo SQL si es necesario
+    @Rollback(true)
     void testCountByRespuesta() {
         // Crear y guardar varias encuestas
         Encuesta encuesta1 = new Encuesta();
